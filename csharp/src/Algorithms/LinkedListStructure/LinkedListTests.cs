@@ -15,18 +15,18 @@ namespace Algorithms.LinkedListStructure
 
             "When adding a node before the head".x(() =>
             {
-                list.AddBeforeFirst(5);
+                list.AddBeforeFirst(3);
             });
 
             "Then head should be the added node".x(() =>
             {
-                list.Head.Value.ShouldBe(5);
+                list.Head.Value.ShouldBe(3);
                 list.Head.Next.ShouldBeNull();
             });
 
             "And tail should be the added node".x(() =>
             {
-                list.Tail.Value.ShouldBe(5);
+                list.Tail.Value.ShouldBe(3);
                 list.Tail.Next.ShouldBeNull();
 
             });
@@ -40,7 +40,7 @@ namespace Algorithms.LinkedListStructure
         [Scenario]
         public void AddBeforeFirstNoneEmptyListTest(LinkedList<int> list)
         {
-            "Given an empty list".x(() =>
+            "Given a list with 1 item".x(() =>
             {
                 list = new LinkedList<int>();
                 list.AddBeforeFirst(5);
@@ -48,12 +48,12 @@ namespace Algorithms.LinkedListStructure
 
             "When adding a node before the head".x(() =>
             {
-                list.AddBeforeFirst(1);
+                list.AddBeforeFirst(3);
             });
 
             "Then head should be the added node".x(() =>
             {
-                list.Head.Value.ShouldBe(1);
+                list.Head.Value.ShouldBe(3);
                 list.Head.Next.Value.ShouldBe(5);
             });
 
@@ -79,18 +79,18 @@ namespace Algorithms.LinkedListStructure
 
             "When adding a node after the tail".x(() =>
             {
-                list.AddAfterLast(5);
+                list.AddAfterLast(3);
             });
 
             "Then head should be the added node".x(() =>
             {
-                list.Head.Value.ShouldBe(5);
+                list.Head.Value.ShouldBe(3);
                 list.Head.Next.ShouldBeNull();
             });
 
             "And tail should be the added node".x(() =>
             {
-                list.Tail.Value.ShouldBe(5);
+                list.Tail.Value.ShouldBe(3);
                 list.Tail.Next.ShouldBeNull();
 
             });
@@ -107,7 +107,7 @@ namespace Algorithms.LinkedListStructure
             "Given an empty list".x(() =>
             {
                 list = new LinkedList<int>();
-                list.AddBeforeFirst(1);
+                list.AddBeforeFirst(3);
             });
 
             "When adding a node after the tail".x(() =>
@@ -117,7 +117,7 @@ namespace Algorithms.LinkedListStructure
 
             "Then head should remain the same pointing to the new node".x(() =>
             {
-                list.Head.Value.ShouldBe(1);
+                list.Head.Value.ShouldBe(3);
                 list.Head.Next.Value.ShouldBe(5);
             });
 
@@ -134,12 +134,12 @@ namespace Algorithms.LinkedListStructure
         }
 
         [Scenario]
-        public void RemoveFirstOneItemListTest(LinkedList<int> list)
+        public void RemoveFirstListOneItemTest(LinkedList<int> list)
         {
             "Given a list with 1 item".x(() => 
             {
                 list = new LinkedList<int>();
-                list.AddBeforeFirst(5);
+                list.AddBeforeFirst(3);
             });
 
             "When removing the first item".x(() =>
@@ -156,20 +156,35 @@ namespace Algorithms.LinkedListStructure
         }
 
         [Scenario]
-        public void RemoveFirstMultiItemsListTest(LinkedList<int> list)
+        public void RemoveFirstListMultiItemsTest(LinkedList<int> list)
         {
             "Given a list with 2 items".x(() => 
             {
+                list = new LinkedList<int>();
+                list.AddBeforeFirst(3);
+                list.AddAfterLast(5);
             });
 
-            "".x(() =>
+            "When removing the first item".x(() =>
             {
-
+                list.RemoveFirst();
             });
 
-            "".x(() =>
+            "Then head points to null".x(() =>
             {
+                list.Head.Value.ShouldBe(3);
+                list.Head.Next.ShouldBeNull();
+            });
 
+            "And tail should be equal to head".x(() =>
+            {
+                list.Tail.Value.ShouldBe(3);
+                list.Tail.Next.ShouldBeNull();
+            });
+
+            "And the list should have 1 iteam".x(() =>
+            {
+                list.Count.ShouldBe(1);
             });
         }
     }
