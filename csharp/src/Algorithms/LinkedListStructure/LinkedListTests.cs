@@ -172,13 +172,13 @@ namespace Algorithms.LinkedListStructure
 
             "Then head points to null".x(() =>
             {
-                list.Head.Value.ShouldBe(3);
+                list.Head.Value.ShouldBe(5);
                 list.Head.Next.ShouldBeNull();
             });
 
             "And tail should be equal to head".x(() =>
             {
-                list.Tail.Value.ShouldBe(3);
+                list.Tail.Value.ShouldBe(5);
                 list.Tail.Next.ShouldBeNull();
             });
 

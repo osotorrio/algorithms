@@ -51,9 +51,16 @@ namespace Algorithms.LinkedListStructure
 
         public void RemoveFirst()
         {
-            Head = null;
-            Tail = null;
-            Count--;
+            if (Count != 0)
+            {
+                Head = Head.Next;
+                Count--;
+
+                if (Count == 0)
+                {
+                    Tail = null;
+                }
+            }
         }
     }
 }
