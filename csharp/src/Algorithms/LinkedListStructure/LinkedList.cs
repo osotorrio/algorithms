@@ -11,7 +11,12 @@ namespace Algorithms.LinkedListStructure
 
         public int Count { get; private set; }
 
-        public void AddBeforeFirst(Node<T> node)
+        public void AddBeforeFirst(T value)
+        {
+            AddBeforeFirst(new Node<T>(value));
+        }
+
+        private void AddBeforeFirst(Node<T> node)
         {
             var current = Head;
             Head = node;
@@ -24,7 +29,12 @@ namespace Algorithms.LinkedListStructure
             }
         }
 
-        public void AddAfterLast(Node<T> node)
+        public void AddAfterLast(T value)
+        {
+            AddAfterLast(new Node<T>(value));
+        }
+
+        private void AddAfterLast(Node<T> node)
         {
             if (Count == 0)
             {
@@ -37,6 +47,13 @@ namespace Algorithms.LinkedListStructure
 
             Tail = node;
             Count++;
+        }
+
+        public void RemoveFirst()
+        {
+            Head = null;
+            Tail = null;
+            Count--;
         }
     }
 }
