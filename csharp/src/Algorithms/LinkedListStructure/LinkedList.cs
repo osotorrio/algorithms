@@ -1,4 +1,5 @@
-﻿using System.Runtime.ConstrainedExecution;
+﻿using System;
+using System.Runtime.ConstrainedExecution;
 
 namespace Algorithms.LinkedListStructure
 {
@@ -10,20 +11,31 @@ namespace Algorithms.LinkedListStructure
 
         public int Count { get; private set; }
 
-        public void AddFirst(Node<T> node)
+        public void AddBeforeFirst(Node<T> node)
+        {
+            var current = Head;
+            Head = node;
+            Head.Next = current;
+            Count++;
+
+            if (Count == 1)
+            {
+                Tail = node;
+            }
+        }
+
+        public void AddAfterLast(Node<T> node)
         {
             if (Count == 0)
             {
                 Head = node;
-                Tail = node;
             }
             else
             {
-                var current = Head;
-                Head = node;
-                Head.Next = current;
+                Tail.Next = node;
             }
 
+            Tail = node;
             Count++;
         }
     }
