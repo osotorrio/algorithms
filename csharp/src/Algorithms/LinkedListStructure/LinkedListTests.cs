@@ -248,6 +248,7 @@ namespace Algorithms.LinkedListStructure
         }
 
         [Scenario]
+        // https://dzone.com/articles/ienumerable-vs-ienumerator
         public void GetEnumeratorTest(LinkedList<int> list, List<int> values)
         {
             "Given a list with 2 items".x(() => 

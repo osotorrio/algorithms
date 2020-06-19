@@ -1,16 +1,15 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.ConstrainedExecution;
 
 namespace Algorithms.LinkedListStructure
 {
-    public class LinkedList<T>
+    public class LinkedList<T> : ICollection<T>
     {
         public Node<T> Head { get; private set; }
 
         public Node<T> Tail { get; private set; }
-
-        public int Count { get; private set; }
 
         public void AddBeforeFirst(T value)
         {
@@ -90,14 +89,62 @@ namespace Algorithms.LinkedListStructure
             }
         }
 
-        public IEnumerator<T> GetEnumerator()
+        #region ICollection<T>
+
+        public int Count { get; private set; }
+
+        public bool IsReadOnly => false;
+
+        public void Add(T item)
+        {
+            AddAfterLast(item);
+        }
+
+        public void Clear()
+        {
+            Head = null;
+            Tail = null;
+            Count = 0;
+        }
+
+        public bool Contains(T item)
         {
             var current = Head;
             while(current != null)
+            {
+                if (current.Value.Equals(item))
+                {
+                    return true;
+                }
+                current = current.Next;
+            }
+            return false;
+        }
+
+        public void CopyTo(T[] array, int arrayIndex)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Remove(T item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            var current = Head;
+            while (current != null)
             {
                 yield return current.Value;
                 current = current.Next;
             }
         }
+        #endregion
     }
 }
