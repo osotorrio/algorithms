@@ -248,7 +248,7 @@ namespace Algorithms.LinkedListStructure
         }
 
         [Scenario]
-        public void GetEnumeratorTest(LinkedList<int> list, IEnumerable<int> nodes)
+        public void GetEnumeratorTest(LinkedList<int> list, List<int> values)
         {
             "Given a list with 2 items".x(() => 
             {
@@ -259,22 +259,29 @@ namespace Algorithms.LinkedListStructure
 
             "When getting the enumerabled list".x(() =>
             {
-                nodes = list.GetEnumerator();
+                var enumerator = list.GetEnumerator();
+
+                values = new List<int>();
+
+                while (enumerator.MoveNext())
+                {
+                    values.Add(enumerator.Current);
+                }
             });
 
             "Then the first node should be 3".x(() =>
             {
-                nodes.First().ShouldBe(3);
+                values.First().ShouldBe(3);
             });
 
             "And the second node should be 5".x(() =>
             {
-                nodes.Last().ShouldBe(5);
+                values.Last().ShouldBe(5);
             });
 
             "And it should be equal nodes than items".x(() =>
             {
-                nodes.Count().ShouldBe(list.Count);
+                values.Count().ShouldBe(list.Count);
             });
         }
     }

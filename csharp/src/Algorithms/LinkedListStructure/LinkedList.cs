@@ -90,7 +90,7 @@ namespace Algorithms.LinkedListStructure
             }
         }
 
-        public IEnumerable<T> GetEnumerator()
+        public IEnumerator<T> GetEnumerator()
         {
             var current = Head;
             while(current != null)
