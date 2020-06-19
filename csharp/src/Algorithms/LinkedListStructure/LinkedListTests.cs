@@ -1,4 +1,5 @@
 ﻿using Shouldly;
+using Shouldly.Configuration;
 using System.Collections.Generic;
 using System.Linq;
 using Xbehave;
@@ -307,6 +308,36 @@ namespace Algorithms.LinkedListStructure
                 list.Head.ShouldBeNull();
                 list.Tail.ShouldBeNull();
                 list.Count.ShouldBe(0);
+            });
+        }
+
+        [Scenario]
+        public void CopyToTest(LinkedList<int> list, int[] array)
+        {
+            "Given a list with 3 items".x(() => 
+            {
+                list = new LinkedList<int>();
+                list.AddBeforeFirst(3);
+                list.AddAfterLast(5);
+                list.AddAfterLast(7);
+            });
+
+            "And an empty array".x(() =>
+            {
+                array = new int[3];
+            });
+
+            "When copying the list to the array".x(() =>
+            {
+                list.CopyTo(array, 0);
+            });
+
+            "Then the array contains the 3 values from the list".x(() =>
+            {
+                array.Length.ShouldBe(3);
+                array[0].ShouldBe(3);
+                array[1].ShouldBe(5);
+                array[2].ShouldBe(7);
             });
         }
     }
