@@ -133,17 +133,17 @@ namespace Algorithms.LinkedListStructure
 
         public IEnumerator<T> GetEnumerator()
         {
-            return GetEnumerator();
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
             var current = Head;
             while (current != null)
             {
                 yield return current.Value;
                 current = current.Next;
             }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
         }
         #endregion
     }

@@ -285,5 +285,29 @@ namespace Algorithms.LinkedListStructure
                 values.Count().ShouldBe(list.Count);
             });
         }
+
+        [Scenario]
+        public void ClearTest(LinkedList<int> list)
+        {
+            "Given a list with multiple items".x(() => 
+            {
+                list = new LinkedList<int>();
+                list.AddBeforeFirst(3);
+                list.AddAfterLast(5);
+                list.AddAfterLast(7);
+            });
+
+            "When the list is cleared".x(() =>
+            {
+                list.Clear();
+            });
+
+            "Then the list in empty".x(() =>
+            {
+                list.Head.ShouldBeNull();
+                list.Tail.ShouldBeNull();
+                list.Count.ShouldBe(0);
+            });
+        }
     }
 }
