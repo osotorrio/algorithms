@@ -1,4 +1,6 @@
 ﻿using Shouldly;
+using System.Collections.Generic;
+using System.Linq;
 using Xbehave;
 
 namespace Algorithms.LinkedListStructure
@@ -242,6 +244,37 @@ namespace Algorithms.LinkedListStructure
             "And the list contains 2 items".x(() =>
             {
                 list.Count.ShouldBe(2);
+            });
+        }
+
+        [Scenario]
+        public void GetEnumeratorTest(LinkedList<int> list, IEnumerable<int> nodes)
+        {
+            "Given a list with 2 items".x(() => 
+            {
+                list = new LinkedList<int>();
+                list.AddBeforeFirst(3);
+                list.AddAfterLast(5);
+            });
+
+            "When getting the enumerabled list".x(() =>
+            {
+                nodes = list.GetEnumerator();
+            });
+
+            "Then the first node should be 3".x(() =>
+            {
+                nodes.First().ShouldBe(3);
+            });
+
+            "And the second node should be 5".x(() =>
+            {
+                nodes.Last().ShouldBe(5);
+            });
+
+            "And it should be equal nodes than items".x(() =>
+            {
+                nodes.Count().ShouldBe(list.Count);
             });
         }
     }

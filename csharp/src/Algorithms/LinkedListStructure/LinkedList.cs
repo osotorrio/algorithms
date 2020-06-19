@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Runtime.ConstrainedExecution;
 
 namespace Algorithms.LinkedListStructure
@@ -86,6 +87,16 @@ namespace Algorithms.LinkedListStructure
                 }
 
                 Count--;
+            }
+        }
+
+        public IEnumerable<T> GetEnumerator()
+        {
+            var current = Head;
+            while(current != null)
+            {
+                yield return current.Value;
+                current = current.Next;
             }
         }
     }
