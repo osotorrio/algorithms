@@ -62,5 +62,31 @@ namespace Algorithms.LinkedListStructure
                 }
             }
         }
+
+        public void RemoveLast()
+        {
+            if (Count != 0)
+            {
+                if (Count == 1)
+                {
+                    Head = null;
+                    Tail = null;
+                }
+                else
+                {
+                    var current = Head;
+
+                    while(current.Next != Tail)
+                    {
+                        current = current.Next;
+                    }
+
+                    current.Next = null;
+                    Tail = current;
+                }
+
+                Count--;
+            }
+        }
     }
 }

@@ -187,5 +187,62 @@ namespace Algorithms.LinkedListStructure
                 list.Count.ShouldBe(1);
             });
         }
+
+        [Scenario]
+        public void RemoveLastListOneItemTest(LinkedList<int> list)
+        {
+            "Given a list with 1 item".x(() => 
+            {
+                list = new LinkedList<int>();
+                list.AddBeforeFirst(3);
+            });
+
+            "When removing the last iteam".x(() =>
+            {
+                list.RemoveLast();
+            });
+
+            "Then the list is empty".x(() =>
+            {
+                list.Head.ShouldBeNull();
+                list.Tail.ShouldBeNull();
+                list.Count.ShouldBe(0);
+            });
+        }
+
+        [Scenario]
+        public void RemoveLastListMultiItemsTest(LinkedList<int> list)
+        {
+            "Given a list with 3 items".x(() => 
+            {
+                list = new LinkedList<int>();
+                list.AddBeforeFirst(3);
+                list.AddAfterLast(5);
+                list.AddAfterLast(7);
+            });
+
+            "When removing the last item".x(() => 
+            {
+                list.RemoveLast();
+            });
+
+            "Then the last item is removed".x(() =>
+            {
+                list.Head.Value.ShouldBe(3);
+                list.Head.Next.Value.ShouldBe(5);
+                list.Head.Next.Next.ShouldBeNull();
+            });
+
+            "And tail points to the new last item".x(() =>
+            {
+                list.Tail.Value.ShouldBe(5);
+                list.Tail.Next.ShouldBeNull();
+            });
+
+            "And the list contains 2 items".x(() =>
+            {
+                list.Count.ShouldBe(2);
+            });
+        }
     }
 }
