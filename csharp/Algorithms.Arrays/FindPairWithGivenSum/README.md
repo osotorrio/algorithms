@@ -1,6 +1,6 @@
 ﻿## Find pair with given sum in an array
  
-Given an unsorted array of integers, find a pair with given sum in it.
+Given an unsorted array of integers, find one pair with given sum in it.
 
 For example,
 
@@ -12,7 +12,11 @@ sum = 10
 
 
 Output:
- 
-Pair found at index 0 and 2 (8 + 2)
 
-Pair found at index 1 and 4 (7 + 3)
+{v1: 8, v2: 2, i: 0, j: 2} // (8 + 2) at indexes 0 and 2
+
+or
+
+{v1: 7, v2: 3, i: 1, j: 4} // (7 + 3) at indexes 1 and 4
+
+
