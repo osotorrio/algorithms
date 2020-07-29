@@ -7,43 +7,40 @@ namespace Algorithms.Arrays.FindPairWithGivenSum
     public class FindPairTest
     {
         [Theory]
-        [MemberData(nameof(TestData))]
-        public void FindTests(int sum, int[] arr, dynamic expected)
+        [InlineData(15, new[] { 2, 10, 4, 5, 7, 6, 3, 1, 9, 12 })]
+        public void FindByBruteForceTest(int sum, int[] arr)
         {
             // Arrange
+            var expectedIndex1 = 1;
+            var expectedIndex2 = 3;
+            
             var findPair = new FindPair();
 
             // Act  
-            var pairs = findPair.FindByBruteForce(sum, arr);
+            var pair = findPair.FindByBruteForce(sum, arr);
 
             // Assert
-            Assert.Equal(expected.v1, pairs.v1);
-            Assert.Equal(expected.v2, pairs.v2);
-            Assert.Equal(expected.i, pairs.i);
-            Assert.Equal(expected.j, pairs.j);
+            Assert.Equal(expectedIndex1, pair.Index1);
+            Assert.Equal(expectedIndex2, pair.Index2);
         }
 
-        public static IEnumerable<object[]> TestData =>
-            new List<object[]>
-            {
-                new object[]
-                {
-                    10,
-                    new[] { 8, 7, 2, 5, 3, 1 },
-                    new { v1 = 8, v2 = 2, i = 0, j = 2 }
-                },
-                new object[]
-                {
-                    15,
-                    new[] { 2, 10, 4, 5, 7, 6, 3, 1, 9, 12 },
-                    new { v1 = 10, v2 = 5, i = 1, j = 3 }
-                },
-                new object[]
-                {
-                    5,
-                    new[] { 6, 1, 4, 3, 8, 5, 9, 7 },
-                    new { v1 = 1, v2 = 4, i = 1, j = 2 }
-                }
-            };
+        [Theory]
+        [InlineData(15, new[] { 2, 10, 4, 5, 7, 6, 3, 1, 9, 12 })]
+        public void FindBySortingTest(int sum, int[] arr)
+        {
+            // Arrange
+            // [1, 2, 3, 4, 5, 6, 7, 9, 10, 12]
+            var expectedIndex1 = 2;
+            var expectedIndex2 = 9;
+
+            var findPair = new FindPair();
+
+            // Act  
+            var pair = findPair.FindBySorting(sum, arr);
+
+            // Assert
+            Assert.Equal(expectedIndex1, pair.Index1);
+            Assert.Equal(expectedIndex2, pair.Index2);
+        }
     }
 }

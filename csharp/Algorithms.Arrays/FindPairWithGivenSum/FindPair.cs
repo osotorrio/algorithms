@@ -1,9 +1,17 @@
-﻿namespace Algorithms.Arrays.FindPairWithGivenSum
+﻿using System;
+
+namespace Algorithms.Arrays.FindPairWithGivenSum
 {
     public class FindPair
     {
+        internal class Pair
+        {
+            public int Index1 { get; set; }
+            public int Index2 { get; set; }
+        }
+
         // Complexity analysis: O(n^2) 
-        internal dynamic FindByBruteForce(int sum, int[] arr)
+        internal Pair FindByBruteForce(int sum, int[] arr)
         {
             for (int i = 0; i < arr.Length; i++)
             {
@@ -11,12 +19,33 @@
                 {
                     if (arr[i] + arr[j] == sum)
                     {
-                        return new { v1 = arr[i], v2 = arr[j], i, j };
+                        return new Pair { Index1 = i, Index2 = j };
                     }
                 }
             }
 
-            return new { v1 = 0, v2 = 0, i = 0, j = 0 };
+            return new Pair { Index1 = 0, Index2 = 0 };
+        }
+
+        internal Pair FindBySorting(int sum, int[] arr)
+        {
+            Array.Sort(arr);
+
+            var low = 0;
+            var high = arr.Length - 1;
+
+            while (low < high)
+            {
+                if (arr[low] + arr[high] == sum)
+                {
+                    return new Pair { Index1 = low, Index2 = high };
+                }
+
+                if (arr[low] + arr[high] < sum) low++;
+                if (arr[low] + arr[high] > sum) high--;
+            }
+
+            return new Pair { Index1 = 0, Index2 = 0 };
         }
     }
 }
