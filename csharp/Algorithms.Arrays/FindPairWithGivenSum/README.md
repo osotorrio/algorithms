@@ -13,10 +13,10 @@ sum = 10
 
 Output:
 
-{v1: 8, v2: 2, i: 0, j: 2} // indexes 0 and 2 -> (8 + 2) 
+{i: 0, j: 2} // indexes 0 and 2 -> (8 + 2) 
 
 or
 
-{v1: 7, v2: 3, i: 1, j: 4} // indexes 1 and 4 -> (7 + 3)
+{i: 1, j: 4} // indexes 1 and 4 -> (7 + 3)
 
 
