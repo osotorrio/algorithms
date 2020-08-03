@@ -20,5 +20,5 @@ or
 {i: 1, j: 4} // indexes 1 and 4 -> (7 + 3)
 
 
-Explanation: [https://www.techiedelight.com/find-pair-with-given-sum-array/](https://www.techiedelight.com/find-pair-with-given-sum-array/)
+Explanation: [https://www.techiedelight.com/find-pair-with-given-sum-array](https://www.techiedelight.com/find-pair-with-given-sum-array)
 
