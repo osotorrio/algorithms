@@ -24,16 +24,14 @@ namespace Algorithms.Stacks.CheckBalancedExpression
 
                 if (IsCloseChar(item))
                 {
-                    if (_stack.Count != 0)
+                    if (_stack.Count == 0)
                     {
-                        var top = _stack.Pop();
-
-                        if (!AreComplementary((char)top, item))
-                        {
-                            return false;
-                        }
+                        return false;
                     }
-                    else
+
+                    var top = _stack.Pop();
+
+                    if (!AreComplementary((char)top, item))
                     {
                         return false;
                     }

@@ -9,5 +9,5 @@ Input: "Let's reverse a string"
 Output: "gnirts a esrever s'teL"
 
 
-Explanation: [https://www.techiedelight.com/reverse-a-string-using-recursion/](https://www.techiedelight.com/reverse-a-string-using-recursion/)
+Explanation: [https://www.techiedelight.com/reverse-a-string-using-recursion](https://www.techiedelight.com/reverse-a-string-using-recursion)
 
