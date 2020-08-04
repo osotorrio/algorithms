@@ -1,8 +1,10 @@
-﻿namespace Algorithms.Strings.ReverseStringRecursion
+﻿using System.Collections;
+
+namespace Algorithms.Strings.ReverseStringRecursion
 {
     public class StringReverser
     {
-        public string ReverseRecursion(string input)
+        public string ReverseByRecursion(string input)
         {
             var arr = input.ToCharArray();
 
@@ -15,6 +17,28 @@
                     Swap(arr, left, right);
                     Reverse(arr, left + 1, right - 1);
                 }
+            }
+
+            return new string(arr);
+        }
+
+        public string ReverseByStack(string input)
+        {
+            var arr = input.ToCharArray();
+
+            var stack = new Stack();
+
+            for (int i = 0; i < arr.Length; i++)
+            {
+                stack.Push(arr[i]);
+            }
+
+            var counter = 0;
+            while (stack.Count != 0)
+            {
+                var character = (char)stack.Pop();
+                arr[counter] = character;
+                counter++;
             }
 
             return new string(arr);

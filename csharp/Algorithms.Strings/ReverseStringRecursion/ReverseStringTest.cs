@@ -12,7 +12,7 @@ namespace Algorithms.Strings.ReverseStringRecursion
 
             var reverser = new StringReverser();
 
-            var output = reverser.ReverseRecursion(input);
+            var output = reverser.ReverseByRecursion(input);
 
             output.ShouldBe("vopraK");
         }
@@ -24,7 +24,7 @@ namespace Algorithms.Strings.ReverseStringRecursion
 
             var reverser = new StringReverser();
 
-            var output = reverser.ReverseRecursion(input);
+            var output = reverser.ReverseByRecursion(input);
 
             output.ShouldBe("rehcsiF");
         }
@@ -36,7 +36,7 @@ namespace Algorithms.Strings.ReverseStringRecursion
 
             var reverser = new StringReverser();
 
-            var output = reverser.ReverseRecursion(input);
+            var output = reverser.ReverseByRecursion(input);
 
             output.ShouldBe("gnirts a esrever s'teL");
         }
