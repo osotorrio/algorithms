@@ -9,7 +9,26 @@ namespace Algorithms.Queues.StackByQueues
         [Fact]
         public void StatckByTwoQueuesTest()
         {
-            var stack = new StatckByTwoQueues<string>();
+            var stack = new StackByTwoQueues<string>();
+
+            stack.Push("one");
+            stack.Push("two");
+            stack.Push("three");
+
+            var popped = stack.Pop();
+            popped.ShouldBe("three");
+
+            popped = stack.Pop();
+            popped.ShouldBe("two");
+
+            popped = stack.Pop();
+            popped.ShouldBe("one");
+        }
+
+        [Fact]
+        public void StatckByOneQueueTest()
+        {
+            var stack = new StackByOneQueue<string>();
 
             stack.Push("one");
             stack.Push("two");

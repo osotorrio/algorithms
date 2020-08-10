@@ -2,7 +2,7 @@
 
 namespace Algorithms.Queues.StackByQueues
 {
-    public class StatckByTwoQueues<T>
+    public class StackByTwoQueues<T>
     {
         private Queue<T> _mainQueue = new Queue<T>();
 
