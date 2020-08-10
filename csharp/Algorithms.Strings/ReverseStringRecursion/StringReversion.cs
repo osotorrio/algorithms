@@ -2,13 +2,13 @@
 
 namespace Algorithms.Strings.ReverseStringRecursion
 {
-    public class StringReverser
+    public class StringReversion
     {
-        public string ReverseByRecursion(string input)
+        public string ReverseBySwapRecursion(string input)
         {
-            var arr = input.ToCharArray();
+            var array = input.ToCharArray();
 
-            Reverse(arr, 0, arr.Length - 1);
+            Reverse(array, 0, array.Length - 1);
 
             static void Reverse(char[] arr, int left, int right)
             {
@@ -19,7 +19,24 @@ namespace Algorithms.Strings.ReverseStringRecursion
                 }
             }
 
-            return new string(arr);
+            return new string(array);
+        }
+
+        public string ReverseByArrayRecursion(string input)
+        {
+            var array = input.ToCharArray();
+
+            Reverse(0);
+
+            void Reverse(int i)
+            {
+                if (i == array.Length) return;
+                var lastItem = array[array.Length - (i + 1)];
+                Reverse(i + 1);
+                array[i] = lastItem;
+            }
+
+            return new string(array);
         }
 
         public string ReverseByStack(string input)
