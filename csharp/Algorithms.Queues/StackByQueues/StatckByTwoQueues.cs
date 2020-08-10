@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Algorithms.Queues.ImplementStack
+namespace Algorithms.Queues.StackByQueues
 {
     public class StatckByTwoQueues<T>
     {
@@ -8,14 +8,14 @@ namespace Algorithms.Queues.ImplementStack
 
         private Queue<T> _helperQueue = new Queue<T>();
 
-        public void Push(T newItem)
+        public void Push(T item)
         {
             while (_mainQueue.Count != 0)
             {
                 _helperQueue.Enqueue(_mainQueue.Dequeue());
             }
 
-            _mainQueue.Enqueue(newItem);
+            _mainQueue.Enqueue(item);
 
             while(_helperQueue.Count != 0)
             {
