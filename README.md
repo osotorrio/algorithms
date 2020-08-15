@@ -19,3 +19,27 @@
 - [Matrix](https://www.geeksforgeeks.org/matrix/)
 
 More info: [https://en.wikipedia.org/wiki/List_of_data_structures](https://en.wikipedia.org/wiki/List_of_data_structures)
+
+# Algorithms
+
+
+- Recursion
+- Backtraining
+- Divide and Conquer
+- Greedy
+- Sorting
+  - Insertion Sort
+  - Selection sort
+  - Bubble Sort
+  - Merge Sort
+  - Quick Sort
+  - Hybrid QuickSort
+- Searching
+  - Linear Search
+  - Binary Search
+  - Depth First Search
+  - Breadth First Search
+
+More info: [https://en.wikipedia.org/wiki/List_of_algorithms](https://en.wikipedia.org/wiki/List_of_algorithms)
+
+More to learn: [https://softwareengineering.stackexchange.com/questions/155639/which-algorithms-data-structures-should-i-recognize-and-know-by-name](https://softwareengineering.stackexchange.com/questions/155639/which-algorithms-data-structures-should-i-recognize-and-know-by-name) 
