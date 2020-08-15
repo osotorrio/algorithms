@@ -18,7 +18,8 @@
 - [Graphs](https://www.geeksforgeeks.org/graph-data-structure-and-algorithms/)
 - [Matrix](https://www.geeksforgeeks.org/matrix/)
 
-More info: [https://en.wikipedia.org/wiki/List_of_data_structures](https://en.wikipedia.org/wiki/List_of_data_structures)
+List of data structures: [https://en.wikipedia.org/wiki/List_of_data_structures](https://en.wikipedia.org/wiki/List_of_data_structures)
+Data Structures Easy to Advanced Course - Full Tutorial from a Google Engineer: [https://www.youtube.com/watch?v=RBSGKlAvoiM](https://www.youtube.com/watch?v=RBSGKlAvoiM)
 
 # Algorithms
 
