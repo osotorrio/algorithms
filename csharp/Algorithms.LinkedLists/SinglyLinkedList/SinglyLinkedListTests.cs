@@ -1,4 +1,5 @@
 ﻿using Shouldly;
+using System;
 using Xunit;
 
 namespace Algorithms.LinkedLists.SinglyLinkedList
@@ -93,6 +94,48 @@ namespace Algorithms.LinkedLists.SinglyLinkedList
 
             list.Last.Value.ShouldBe("two");
             list.Last.Next.ShouldBeNull();
+        }
+
+        [Fact]
+        public void AddAfterWhenTargetNodeExistTest()
+        {
+            // Arrange
+            var list = new SinglyLinkedList<string>();
+            var one = list.AddFirst("one");
+            var three = list.AddLast("three");
+
+            // Act
+            var two = list.AddAfter(one, "two");
+
+            // Assert
+            list.Count.ShouldBe(3);
+
+            two.Value.ShouldBe("two");
+            two.Next.Value.ShouldBe("three");
+
+            list.First.Value.ShouldBe("one");
+            list.First.Next.Value.ShouldBe("two");
+            list.First.Next.Next.Value.ShouldBe("three");
+
+            list.Last.Value.ShouldBe("three");
+            list.Last.Next.ShouldBeNull();
+        }
+
+        [Fact]
+        public void AddAfterWhenTargetNodeDoesNotExistTest()
+        {
+            // Arrange
+            var list = new SinglyLinkedList<string>();
+            var one = list.AddFirst("one");
+            var three = list.AddLast("three");
+
+            // Act & Assert
+            var anotherOne = new SinglyLinkedNode<string> { Value = "one" };
+
+            Should.Throw<InvalidOperationException>(() =>
+            {
+                var two = list.AddAfter(anotherOne, "two");
+            });
         }
     }
 }

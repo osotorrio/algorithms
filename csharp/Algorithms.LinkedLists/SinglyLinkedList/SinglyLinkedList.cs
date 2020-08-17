@@ -57,5 +57,25 @@ namespace Algorithms.LinkedLists.SinglyLinkedList
             node.Next = Last;
             return Last;
         }
+
+        public SinglyLinkedNode<T> AddAfter(SinglyLinkedNode<T> target, T value)
+        {
+            var current = First;
+
+            while(current.Next != null)
+            {
+                if (Object.ReferenceEquals(current, target))
+                {
+                    var node = new SinglyLinkedNode<T> { Value = value };
+                    node.Next = current.Next;
+                    current.Next = node;
+                    return node;
+                }
+
+                current = current.Next;
+            }
+
+            throw new InvalidOperationException("The target node does not belong to the list");
+        }
     }
 }
