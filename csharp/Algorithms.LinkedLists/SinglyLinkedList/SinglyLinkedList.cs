@@ -6,7 +6,7 @@ namespace Algorithms.LinkedLists.SinglyLinkedList
     {
         public T Value { get; set; }
 
-        public SinglyLinkedNode<T> Next { get; }
+        public SinglyLinkedNode<T> Next { get; set; }
     }
 
     public class SinglyLinkedList<T>
@@ -46,7 +46,16 @@ namespace Algorithms.LinkedLists.SinglyLinkedList
                 return AddFirst(value);
             }
 
-            return null;
+            var node = First;
+
+            while(node.Next != null)
+            {
+                node = node.Next;
+            }
+
+            Last = new SinglyLinkedNode<T> { Value = value };
+            node.Next = Last;
+            return Last;
         }
     }
 }

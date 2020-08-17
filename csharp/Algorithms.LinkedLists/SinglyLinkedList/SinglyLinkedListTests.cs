@@ -1,7 +1,4 @@
 ﻿using Shouldly;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Xunit;
 
 namespace Algorithms.LinkedLists.SinglyLinkedList
@@ -9,19 +6,19 @@ namespace Algorithms.LinkedLists.SinglyLinkedList
     public class SinglyLinkedListTests
     {
         [Fact]
-        public void AddFirstEmptyListTest()
+        public void AddFirstWhenListEmptyTest()
         {
             // Arrange
             var list = new SinglyLinkedList<string>();
 
             // Act
-            var node = list.AddFirst("one");
+            var one = list.AddFirst("one");
 
             // Assert
             list.Count.ShouldBe(1);
             
-            node.Value.ShouldBe("one");
-            node.Next.ShouldBeNull();
+            one.Value.ShouldBe("one");
+            one.Next.ShouldBeNull();
             
             list.First.Value.ShouldBe("one");
             list.First.Next.ShouldBeNull();
@@ -31,19 +28,42 @@ namespace Algorithms.LinkedLists.SinglyLinkedList
         }
 
         [Fact]
-        public void AddLastEmptyListTest()
+        public void AddFirstWhenListNoEmptyTest()
+        {
+            // Arrange
+            var list = new SinglyLinkedList<string>();
+            var one = list.AddFirst("one");
+
+            // Act
+            var two = list.AddFirst("two");
+
+            // Assert
+            list.Count.ShouldBe(1);
+
+            two.Value.ShouldBe("two");
+            two.Next.ShouldBeNull();
+
+            list.First.Value.ShouldBe("two");
+            list.First.Next.ShouldBeNull();
+
+            list.Last.Value.ShouldBe("two");
+            list.Last.Next.ShouldBeNull();
+        }
+
+        [Fact]
+        public void AddLastWhenListEmptyTest()
         {
             // Arrange
             var list = new SinglyLinkedList<string>();
 
             // Act
-            var node = list.AddLast("one");
+            var one = list.AddLast("one");
 
             // Assert
             list.Count.ShouldBe(1);
 
-            node.Value.ShouldBe("one");
-            node.Next.ShouldBeNull();
+            one.Value.ShouldBe("one");
+            one.Next.ShouldBeNull();
 
             list.First.Value.ShouldBe("one");
             list.First.Next.ShouldBeNull();
@@ -53,19 +73,26 @@ namespace Algorithms.LinkedLists.SinglyLinkedList
         }
 
         [Fact]
-        public void Monkey()
+        public void AddLastWhenListNoEmptyTest()
         {
-            var list = new LinkedList<string>();
+            // Arrange
+            var list = new SinglyLinkedList<string>();
+            var one = list.AddFirst("one");
 
-            var first = list.AddFirst("one");
-            list.AddLast("three");
+            // Act
+            var two = list.AddLast("two");
 
+            // Assert
+            list.Count.ShouldBe(2);
 
-            var first2 = list.AddAfter(first, "one");
+            two.Value.ShouldBe("two");
+            two.Next.ShouldBeNull();
 
-            var newFirst = new LinkedListNode<string>("one");
+            list.First.Value.ShouldBe("one");
+            list.First.Next.Value.ShouldBe("two");
 
-            list.AddAfter(newFirst, "two");
+            list.Last.Value.ShouldBe("two");
+            list.Last.Next.ShouldBeNull();
         }
     }
 }
