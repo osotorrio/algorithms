@@ -137,5 +137,47 @@ namespace Algorithms.LinkedLists.SinglyLinkedList
                 var two = list.AddAfter(anotherOne, "two");
             });
         }
+
+        [Fact]
+        public void AddBeforeWhenTargetNodeExistTest()
+        {
+            // Arrange
+            var list = new SinglyLinkedList<string>();
+            var one = list.AddFirst("one");
+            var three = list.AddLast("three");
+
+            // Act
+            var two = list.AddBefore(three, "two");
+
+            // Assert
+            list.Count.ShouldBe(3);
+
+            two.Value.ShouldBe("two");
+            two.Next.Value.ShouldBe("three");
+
+            list.First.Value.ShouldBe("one");
+            list.First.Next.Value.ShouldBe("two");
+            list.First.Next.Next.Value.ShouldBe("three");
+
+            list.Last.Value.ShouldBe("three");
+            list.Last.Next.ShouldBeNull();
+        }
+
+        [Fact]
+        public void AddBeforeWhenTargetNodeDoesNotExistTest()
+        {
+            // Arrange
+            var list = new SinglyLinkedList<string>();
+            var one = list.AddFirst("one");
+            var three = list.AddLast("three");
+
+            // Act & Assert
+            var anotherThree = new SinglyLinkedNode<string> { Value = "three" };
+
+            Should.Throw<InvalidOperationException>(() =>
+            {
+                var two = list.AddBefore(anotherThree, "two");
+            });
+        }
     }
 }

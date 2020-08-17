@@ -77,5 +77,27 @@ namespace Algorithms.LinkedLists.SinglyLinkedList
 
             throw new InvalidOperationException("The target node does not belong to the list");
         }
+
+        public SinglyLinkedNode<T> AddBefore(SinglyLinkedNode<T> target, T value)
+        {
+            SinglyLinkedNode<T> previous = null;
+            var current = First;
+
+            while (current != null)
+            {
+                if (Object.ReferenceEquals(current, target))
+                {
+                    var node = new SinglyLinkedNode<T> { Value = value };
+                    node.Next = current;
+                    previous.Next = node;
+                    return node;
+                }
+
+                previous = current;
+                current = current.Next;
+            }
+
+            throw new InvalidOperationException("The target node does not belong to the list");
+        }
     }
 }
