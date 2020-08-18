@@ -97,87 +97,109 @@ namespace Algorithms.LinkedLists.SinglyLinkedList
         }
 
         [Fact]
-        public void AddAfterWhenTargetNodeExistTest()
+        public void AddAfterWhenListEmptyTest()
         {
             // Arrange
             var list = new SinglyLinkedList<string>();
-            var one = list.AddFirst("one");
-            var three = list.AddLast("three");
+
+            // Act & Assert
+            Should.Throw<InvalidOperationException>(() =>
+            {
+                list.AddBefore(list.First, "two");
+            });
+        }
+
+        [Fact]
+        public void AddAfterFirstWhenListHasOneItemTest()
+        {
+            // Arrange
+            var list = new SinglyLinkedList<string>();
+            list.AddFirst("one");
 
             // Act
-            var two = list.AddAfter(one, "two");
+            var two = list.AddAfter(list.First, "two");
+
+            // Arrange
+            two.Value.ShouldBe("two");
+            two.Next.ShouldBeNull();
+
+            list.Count.ShouldBe(2);
+            list.First.Value.ShouldBe("one");
+            list.First.Next.Value.ShouldBe("two");
+            list.First.Next.Next.ShouldBeNull();
+            list.Last.Value.ShouldBe("two");
+            list.Last.Next.ShouldBeNull();
+        }
+
+        [Fact]
+        public void AddAfterLastWhenListHasOneItemTest()
+        {
+            // Arrange
+            var list = new SinglyLinkedList<string>();
+            list.AddFirst("one");
+
+            // Act
+            var two = list.AddAfter(list.Last, "two");
+
+            // Arrange
+            two.Value.ShouldBe("two");
+            two.Next.ShouldBeNull();
+
+            list.Count.ShouldBe(2);
+            list.First.Value.ShouldBe("one");
+            list.First.Next.Value.ShouldBe("two");
+            list.First.Next.Next.ShouldBeNull();
+            list.Last.Value.ShouldBe("two");
+            list.Last.Next.ShouldBeNull();
+        }
+
+        [Fact]
+        public void AddAfterFirstWhenListHasTwoItemsTest()
+        {
+            // Arrange
+            var list = new SinglyLinkedList<string>();
+            list.AddFirst("one");
+            list.AddLast("three");
+
+            // Act
+            var two = list.AddAfter(list.First, "two");
 
             // Assert
-            list.Count.ShouldBe(3);
-
             two.Value.ShouldBe("two");
             two.Next.Value.ShouldBe("three");
+            two.Next.Next.ShouldBeNull();
 
+            list.Count.ShouldBe(3);
             list.First.Value.ShouldBe("one");
             list.First.Next.Value.ShouldBe("two");
             list.First.Next.Next.Value.ShouldBe("three");
-
+            list.First.Next.Next.Next.ShouldBeNull();
             list.Last.Value.ShouldBe("three");
             list.Last.Next.ShouldBeNull();
         }
 
         [Fact]
-        public void AddAfterWhenTargetNodeDoesNotExistTest()
+        public void AddAfterLastWhenListHasTwoItemsTest()
         {
             // Arrange
             var list = new SinglyLinkedList<string>();
-            var one = list.AddFirst("one");
-            var three = list.AddLast("three");
-
-            // Act & Assert
-            var anotherOne = new SinglyLinkedNode<string> { Value = "one" };
-
-            Should.Throw<InvalidOperationException>(() =>
-            {
-                var two = list.AddAfter(anotherOne, "two");
-            });
-        }
-
-        [Fact]
-        public void AddBeforeWhenTargetNodeExistTest()
-        {
-            // Arrange
-            var list = new SinglyLinkedList<string>();
-            var one = list.AddFirst("one");
-            var three = list.AddLast("three");
+            list.AddFirst("one");
+            list.AddLast("two");
 
             // Act
-            var two = list.AddBefore(three, "two");
+            var three = list.AddAfter(list.Last, "three");
 
             // Assert
+            three.Value.ShouldBe("three");
+            three.Next.ShouldBeNull();
+
             list.Count.ShouldBe(3);
-
-            two.Value.ShouldBe("two");
-            two.Next.Value.ShouldBe("three");
-
             list.First.Value.ShouldBe("one");
             list.First.Next.Value.ShouldBe("two");
             list.First.Next.Next.Value.ShouldBe("three");
-
+            list.First.Next.Next.Next.ShouldBeNull();
             list.Last.Value.ShouldBe("three");
             list.Last.Next.ShouldBeNull();
-        }
-
-        [Fact]
-        public void AddBeforeWhenTargetNodeDoesNotExistTest()
-        {
-            // Arrange
-            var list = new SinglyLinkedList<string>();
-            var one = list.AddFirst("one");
-            var three = list.AddLast("three");
-
-            // Act & Assert
-            var anotherThree = new SinglyLinkedNode<string> { Value = "three" };
-
-            Should.Throw<InvalidOperationException>(() =>
-            {
-                var two = list.AddBefore(anotherThree, "two");
-            });
         }
     }
 }

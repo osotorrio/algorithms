@@ -62,11 +62,17 @@ namespace Algorithms.LinkedLists.SinglyLinkedList
         {
             var current = First;
 
-            while(current.Next != null)
+            while(current != null)
             {
                 if (Object.ReferenceEquals(current, target))
                 {
                     var node = new SinglyLinkedNode<T> { Value = value };
+
+                    if (Object.ReferenceEquals(Last, target))
+                    {
+                        Last = node;
+                    }
+
                     node.Next = current.Next;
                     current.Next = node;
                     return node;
