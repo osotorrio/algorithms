@@ -86,21 +86,36 @@ namespace Algorithms.LinkedLists.SinglyLinkedList
 
         public SinglyLinkedNode<T> AddBefore(SinglyLinkedNode<T> target, T value)
         {
-            SinglyLinkedNode<T> previous = null;
-            var current = First;
-
-            while (current != null)
+            if (Count != 0)
             {
-                if (Object.ReferenceEquals(current, target))
+                SinglyLinkedNode<T> previous = null;
+                var node = new SinglyLinkedNode<T> { Value = value };
+
+                if (Object.ReferenceEquals(First, target))
                 {
-                    var node = new SinglyLinkedNode<T> { Value = value };
-                    node.Next = current;
-                    previous.Next = node;
+                    previous = First;
+                    First = node;
+                    First.Next = previous;
                     return node;
                 }
+                else
+                {
+                    var current = First;
 
-                previous = current;
-                current = current.Next;
+                    while (current != null)
+                    {
+                        if (Object.ReferenceEquals(current, target))
+                        {
+                            First = previous;
+                            node.Next = current;
+                            First.Next = node;
+                            return node;
+                        }
+
+                        previous = current;
+                        current = current.Next;
+                    }
+                }
             }
 
             throw new InvalidOperationException("The target node does not belong to the list");

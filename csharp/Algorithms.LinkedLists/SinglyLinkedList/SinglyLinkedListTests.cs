@@ -105,7 +105,7 @@ namespace Algorithms.LinkedLists.SinglyLinkedList
             // Act & Assert
             Should.Throw<InvalidOperationException>(() =>
             {
-                list.AddBefore(list.First, "two");
+                list.AddAfter(list.First, "two");
             });
         }
 
@@ -192,6 +192,116 @@ namespace Algorithms.LinkedLists.SinglyLinkedList
             // Assert
             three.Value.ShouldBe("three");
             three.Next.ShouldBeNull();
+
+            list.Count.ShouldBe(3);
+            list.First.Value.ShouldBe("one");
+            list.First.Next.Value.ShouldBe("two");
+            list.First.Next.Next.Value.ShouldBe("three");
+            list.First.Next.Next.Next.ShouldBeNull();
+            list.Last.Value.ShouldBe("three");
+            list.Last.Next.ShouldBeNull();
+        }
+
+        [Fact]
+        public void AddBeforeWhenListEmptyTest()
+        {
+            // Arrange
+            var list = new SinglyLinkedList<string>();
+
+            // Act & Assert
+            Should.Throw<InvalidOperationException>(() =>
+            {
+                list.AddBefore(list.First, "one");
+            });
+        }
+
+        [Fact]
+        public void AddBeforeFirstWhenListHasOneItem()
+        {
+            // Arrange
+            var list = new SinglyLinkedList<string>();
+            list.AddFirst("two");
+
+            // Act
+            var one = list.AddBefore(list.First, "one");
+
+            // Assert
+            one.Value.ShouldBe("one");
+            one.Next.Value.ShouldBe("two");
+            one.Next.Next.ShouldBeNull();
+
+            list.Count.ShouldBe(2);
+            list.First.Value.ShouldBe("one");
+            list.First.Next.Value.ShouldBe("two");
+            list.First.Next.Next.ShouldBeNull();
+            list.Last.Value.ShouldBe("two");
+            list.Last.Next.ShouldBeNull();
+        }
+
+        [Fact]
+        public void AddBeforeLastWhenListHasOneItem()
+        {
+            // Arrange
+            var list = new SinglyLinkedList<string>();
+            list.AddFirst("two");
+
+            // Act
+            var one = list.AddBefore(list.Last, "one");
+
+            // Assert
+            one.Value.ShouldBe("one");
+            one.Next.Value.ShouldBe("two");
+            one.Next.Next.ShouldBeNull();
+
+            list.Count.ShouldBe(2);
+            list.First.Value.ShouldBe("one");
+            list.First.Next.Value.ShouldBe("two");
+            list.First.Next.Next.ShouldBeNull();
+            list.Last.Value.ShouldBe("two");
+            list.Last.Next.ShouldBeNull();
+        }
+
+        [Fact]
+        public void AddBeforeFirstWhenListHasTwoItemsTest()
+        {
+            // Arrange
+            var list = new SinglyLinkedList<string>();
+            list.AddFirst("two");
+            list.AddLast("three");
+
+            // Act
+            var one = list.AddBefore(list.First, "one");
+
+            // Assert
+            one.Value.ShouldBe("one");
+            one.Next.Value.ShouldBe("two");
+            one.Next.Next.Value.ShouldBe("three");
+            one.Next.Next.Next.ShouldBeNull();
+
+            list.Count.ShouldBe(3);
+            list.First.Value.ShouldBe("one");
+            list.First.Next.Value.ShouldBe("two");
+            list.First.Next.Next.Value.ShouldBe("three");
+            list.First.Next.Next.Next.ShouldBeNull();
+            list.Last.Value.ShouldBe("three");
+            list.Last.Next.ShouldBeNull();
+        }
+
+        [Fact]
+        public void AddBeforeLastWhenListHasTwoItemsTest()
+        {
+            // Arrange
+            var list = new SinglyLinkedList<string>();
+            list.AddFirst("one");
+            list.AddLast("three");
+
+            // Act
+            var two = list.AddBefore(list.Last, "two");
+
+            // Assert
+            two.Value.ShouldBe("two");
+            two.Next.Value.ShouldBe("three");
+            two.Next.Next.ShouldBeNull();
 
             list.Count.ShouldBe(3);
             list.First.Value.ShouldBe("one");
