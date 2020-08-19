@@ -120,5 +120,26 @@ namespace Algorithms.LinkedLists.SinglyLinkedList
 
             throw new InvalidOperationException("The target node does not belong to the list");
         }
+
+        public SinglyLinkedNode<T> Find(T value)
+        {
+            SinglyLinkedNode<T> node = null;
+
+            var current = First;
+
+            while(current != null)
+            {
+                if (current.Value.Equals(value))
+                {
+                    node = current;
+                    break;
+                }
+
+                current = current.Next;
+            }
+
+
+            return node;
+        }
     }
 }

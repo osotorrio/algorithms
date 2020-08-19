@@ -311,5 +311,49 @@ namespace Algorithms.LinkedLists.SinglyLinkedList
             list.Last.Value.ShouldBe("three");
             list.Last.Next.ShouldBeNull();
         }
+
+        [Fact]
+        public void FindWhenListEmptyTest()
+        {
+            // Arrange
+            var list = new SinglyLinkedList<string>();
+
+            // Act
+            var node = list.Find("one");
+
+            // Arrange
+            node.ShouldBeNull();
+        }
+
+        [Fact]
+        public void FindWhenDoesNotExistTest()
+        {
+            // Arrange
+            var list = new SinglyLinkedList<string>();
+            list.AddFirst("one");
+
+            // Act
+            var node = list.Find("two");
+
+            // Arrange
+            node.ShouldBeNull();
+        }
+
+        [Fact]
+        public void FindWhenExistTest()
+        {
+            // Arrange
+            var list = new SinglyLinkedList<string>();
+            list.AddFirst("one");
+            list.AddAfter(list.First, "two");
+            list.AddLast("three");
+
+            // Act
+            var two = list.Find("two");
+
+            // Arrange
+            two.Value.ShouldBe("two");
+            two.Next.Value.ShouldBe("three");
+        }
     }
 }
