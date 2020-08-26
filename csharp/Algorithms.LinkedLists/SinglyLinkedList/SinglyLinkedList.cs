@@ -138,7 +138,6 @@ namespace Algorithms.LinkedLists.SinglyLinkedList
                 current = current.Next;
             }
 
-
             return node;
         }
     }
