@@ -14,8 +14,6 @@ namespace Algorithms.Matrices.PrintOutSpiralOrder
 
             while (true)
             {
-                if (left > bottom) break;
-
                 numbers.AddRange(FromLeftToRight(matrix, left, right, top));
                 top++;
 
@@ -29,6 +27,8 @@ namespace Algorithms.Matrices.PrintOutSpiralOrder
 
                 numbers.AddRange(FromBottomToTop(matrix, bottom, top, left));
                 left++;
+
+                if (left > bottom) break;
             }
 
             return string.Join(" ", numbers);

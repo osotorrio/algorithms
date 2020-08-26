@@ -64,6 +64,27 @@ namespace Algorithms.Matrices.PrintOutSpiralOrder
         }
 
         [Fact]
+        public void FourRowsThreeColumnsMatrixTest()
+        {
+            // Arrange
+            var printer = new MatrixPrinter();
+
+            int[,] matrix = new int[4, 3]
+            {
+                { 1, 2, 3 },
+                { 10, 11, 4 },
+                { 9, 12, 5 },
+                { 8, 7, 6 }
+            };
+
+            // Act
+            var result = printer.PrintSpiralOrder(matrix);
+
+            // Assert
+            result.ShouldBe("1 2 3 4 5 6 7 8 9 10 11 12");
+        }
+
+        [Fact]
         public void FiveRowsFiveColumnsMatrixTest()
         {
             // Arrange
