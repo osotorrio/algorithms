@@ -15,6 +15,7 @@ Data Structures Easy to Advanced Course: [https://www.youtube.com/watch?v=RBSGKl
 - [Trees](https://en.wikipedia.org/wiki/List_of_data_structures#Trees)
   - [Binary Tree](https://www.geeksforgeeks.org/binary-tree-data-structure/)
   - [Binary Search Tree](https://www.geeksforgeeks.org/binary-search-tree-data-structure/)
+  - [AVL Tree](https://www.youtube.com/watch?v=-9sHvAnLN_w)
   - [Binary Heaps](https://www.geeksforgeeks.org/heap-data-structure/)
   - [B-Tree](https://www.geeksforgeeks.org/introduction-of-b-tree-2/)
   - [Tries](https://www.geeksforgeeks.org/trie-insert-and-search/)
